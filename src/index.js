@@ -1,11 +1,14 @@
 const express = require('express');
+const mongoose = require('mongoose');
+require('dotenv').config()
 
 const app = express();
 
-// every function the receive req and res as a parameter
-// MIDDLEWARE
-app.get('/', (req, res) => {
-  return res.send('sim');
+mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}`, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
 });
+
+app.use(require('./routes'));
 
 app.listen(8000)
