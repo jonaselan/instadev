@@ -1,0 +1,4 @@
+- login
+- explorar do insta
+- comentários
+- hover para a qtd de likes e comentários
