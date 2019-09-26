@@ -1,12 +1,10 @@
+// is necessary for use jsx
 import React from 'react';
+// integration with browser
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
-import * as serviceWorker from './serviceWorker';
 
+import './stylesheets/global.css';
+
+// get the App.js element and build the app on the index.html (div root)
 ReactDOM.render(<App />, document.getElementById('root'));
-
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
