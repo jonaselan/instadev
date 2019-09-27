@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import '../stylesheets/header.css'
 
@@ -9,8 +10,12 @@ export default function Header() {
   return (
     <header id="main-header">
       <div className="header-content">
+        <Link to="/" >
         <img src={logo} alt="instadev" />
-        <img src={camera} alt="send" />
+        </ Link>
+        <Link to="/new" >
+          <img src={camera} alt="send" />
+        </ Link>
       </div>
     </header>
   );
