@@ -4,3 +4,4 @@
 - hover para a qtd de likes e comentários
 - validações de campos (campos únicos e etc)
 - animação de upload (talvez uma forma de fazer um upload melhor)
+- deletar localmente e remotamente
