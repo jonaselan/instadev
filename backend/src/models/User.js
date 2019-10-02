@@ -1,5 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 
 const UserSchema = new Schema({
   name: {
@@ -19,7 +21,6 @@ const UserSchema = new Schema({
     type: String,
     enum: ['Male', 'Female']
   },
-  phone: String,
   birthday: Date,
   posts:[{
     type: Schema.Types.ObjectId,
@@ -28,5 +29,25 @@ const UserSchema = new Schema({
 }, {
   timestamps: true,
 });
+
+// encrypt new users password
+UserSchema.pre("save", async function hashPassword(next) {
+  if (!this.isModified("password")) next();
+
+  this.password = await bcrypt.hash(this.password, 8);
+});
+
+UserSchema.methods = {
+  // check if the password is correct
+  compareHash(hash) {
+    return bcrypt.compare(hash, this.password);
+  },
+
+  generateToken() {
+    return jwt.sign({ id: this.id }, "secret", {
+      expiresIn: 86400
+    });
+  }
+};
 
 module.exports = mongoose.model('User', UserSchema);
