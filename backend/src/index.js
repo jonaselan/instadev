@@ -1,5 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser')
 require('dotenv').config()
 const path = require('path');
 const cors = require('cors');
@@ -14,6 +15,7 @@ mongoose.connect(`mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${
   useUnifiedTopology: true,
 });
 
+// every function the receive req and res as a parameter
 // create my own middleware
 // now the 'io' variable will be available in
 // the whole app
@@ -24,6 +26,13 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(
+  bodyParser.urlencoded({
+    extended: true
+  })
+)
+
+app.use(bodyParser.json());
 app.use(cors());
 
 app.use(

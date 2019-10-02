@@ -7,7 +7,7 @@ module.exports = {
   async index(req, res) {
     const posts = await Post.find().sort('-createdAt');
 
-    return res.json(posts);
+    return res.status(200).json(posts);
   },
 
   async store(req, res) {
@@ -37,6 +37,6 @@ module.exports = {
 
     req.io.emit('post', post);
 
-    return res.json(post);
+    return res.status(201).json(post);
   },
 }
