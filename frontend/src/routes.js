@@ -15,12 +15,12 @@ function Routes() {
     // Switch is define for set only one route for request
     <BrowserRouter>
       <Switch>
-        <Route exact path="/" component={SignIn} />
+        <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
         <Route path="*" component={NotFound} />
         {/* PrivateRoute */}
         <PrivateRoute path="/" exact component={Feed} />
-        <Route path="/new" component={New} />
+        <PrivateRoute path="/new" component={New} />
       </Switch>
     </BrowserRouter>
   )

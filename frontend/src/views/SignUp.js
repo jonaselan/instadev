@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 
 import Logo from "../assets/instadev.png";
-
+import api from '../services/api';
 import '../stylesheets/sign_up.css';
 
 class SignUp extends Component {
@@ -13,9 +13,21 @@ class SignUp extends Component {
     error: ""
   };
 
-  handleSignUp = e => {
+  handleSignUp = async e => {
     e.preventDefault();
-    alert("Eu vou te registrar");
+    const { username, email, password } = this.state;
+    if (!username || !email || !password) {
+      this.setState({ error: "Preencha todos os dados para se cadastrar" });
+      return;
+    }
+
+    try {
+      await api.post("/signup", { username, email, password });
+      this.props.history.push("/");
+    } catch (err) {
+      console.log(err);
+      this.setState({ error: "Ocorreu um erro ao registrar sua conta." });
+    }
   };
 
   render() {
@@ -52,4 +64,4 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+export default withRouter(SignUp);
