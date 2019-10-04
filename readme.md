@@ -28,6 +28,7 @@ $ yarn start
 
 - authentication (jwt)
 - send email
+- unique like
 - explore page
 - users pages
 - comments

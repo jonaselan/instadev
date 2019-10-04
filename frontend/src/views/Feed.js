@@ -17,6 +17,7 @@ class Feed extends Component {
   // call before mount the component
   async componentDidMount() {
     this.registerToSocket();
+
     const resp = await api.get('posts');
 
     this.setState({ feed: resp.data });
@@ -36,7 +37,7 @@ class Feed extends Component {
     socket.on('like', likedPost => {
       this.setState({
         feed: this.state.feed.map(post =>
-          post._id === likedPost.id ? likedPost : post
+          post._id === likedPost._id ? likedPost : post
         )
       });
     })
