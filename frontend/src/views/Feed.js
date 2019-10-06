@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import api from '../services/api';
 import io from 'socket.io-client';
 
-import '../stylesheets/feed.css'
+import '../stylesheets/feed.scss'
 
 import more from '../assets/more.svg';
 import like from '../assets/like.svg';
@@ -72,7 +72,6 @@ class Feed extends Component {
 
               <p>
                 {post.description}
-                <span> {post.hashtags} </span>
               </p>
             </footer>
           </article>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import api from '../services/api';
 
-import '../stylesheets/new.css';
+import '../stylesheets/new.scss';
 
 class New extends Component {
   state = {
@@ -10,7 +10,6 @@ class New extends Component {
     author: '',
     place: '',
     description: '',
-    hashtags: '',
   };
 
   handleSubmit = async e => {
@@ -22,7 +21,6 @@ class New extends Component {
     data.append('author', this.state.author);
     data.append('place', this.state.place);
     data.append('description', this.state.description);
-    data.append('hashtags', this.state.hashtags);
 
     await api.post('posts', data);
 
@@ -49,8 +47,6 @@ class New extends Component {
                 onChange={this.handleChange} value={this.state.place} />
         <input type="text" name="description" placeholder="Description"
                 onChange={this.handleChange} value={this.state.description} />
-        <input type="text" name="hashtags" placeholder="Hashtags"
-                onChange={this.handleChange} value={this.state.hashtags} />
 
         <button type="submit">Send</button>
       </form>

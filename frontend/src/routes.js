@@ -17,10 +17,11 @@ function Routes() {
       <Switch>
         <Route path="/signin" component={SignIn} />
         <Route path="/signup" component={SignUp} />
-        <Route path="*" component={NotFound} />
-        {/* PrivateRoute */}
+
         <PrivateRoute path="/" exact component={Feed} />
         <PrivateRoute path="/new" component={New} />
+
+        <Route path="*" component={NotFound} />
       </Switch>
     </BrowserRouter>
   )
@@ -32,7 +33,7 @@ const PrivateRoute = ({ component: Component, ...rest }) => (
     render={props =>
       isAuthenticated()
         ? (<Component {...props} />)
-        : (<Redirect to={{ pathname: "/", state: { from: props.location } }} />)
+        : (<Redirect to={{ pathname: "/signin", state: { from: props.location } }} />)
     }
   />
 );

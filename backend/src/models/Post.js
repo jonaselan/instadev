@@ -4,7 +4,6 @@ const PostSchema = new mongoose.Schema({
   author: String,
   place: String,
   description: String,
-  hashtags: String,
   image: {
     type: String,
     required: true,

@@ -3,7 +3,7 @@ import { Link, withRouter } from "react-router-dom";
 
 import Logo from "../assets/instadev.png";
 import api from '../services/api';
-import '../stylesheets/sign_up.css';
+import '../stylesheets/sign_up.scss';
 
 class SignUp extends Component {
   state = {
@@ -17,7 +17,7 @@ class SignUp extends Component {
     e.preventDefault();
     const { username, email, password } = this.state;
     if (!username || !email || !password) {
-      this.setState({ error: "Preencha todos os dados para se cadastrar" });
+      this.setState({ error: "Fill all fields." });
       return;
     }
 
@@ -26,7 +26,7 @@ class SignUp extends Component {
       this.props.history.push("/");
     } catch (err) {
       console.log(err);
-      this.setState({ error: "Ocorreu um erro ao registrar sua conta." });
+      this.setState({ error: "An error has occurred." });
     }
   };
 
@@ -37,27 +37,21 @@ class SignUp extends Component {
           <img src={Logo} id="logo-singup" alt="logo" />
           {this.state.error && <p>{this.state.error}</p>}
           <input
-            className="input-signup"
-            type="text"
-            placeholder="Nome de usuário"
+            className="input-signup" type="text" placeholder="Username"
             onChange={e => this.setState({ username: e.target.value })}
           />
           <input
-            className="input-signup"
-            type="email"
-            placeholder="Endereço de e-mail"
+            className="input-signup" type="email" placeholder="email"
             onChange={e => this.setState({ email: e.target.value })}
           />
           <input
-            className="input-signup"
-            type="password"
-            placeholder="Senha"
+            className="input-signup" type="password" placeholder="Password"
             onChange={e => this.setState({ password: e.target.value })}
           />
-          <button type="submit">Cadastrar grátis</button>
+          <button type="submit">Register</button>
           <hr />
 
-          <Link to="/">Fazer login</Link>
+          <Link to="/signin"> Already have a account? </Link>
         </form>
       </div>
     );
