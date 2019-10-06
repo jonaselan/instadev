@@ -37,7 +37,8 @@ $ yarn start
 - animation for upload
 - delete locally and remote
 - pagination (infinit scroll - lazy load)
-- history
+- posted at
 - notifications
 - redis?
 - loading splash
+- footer

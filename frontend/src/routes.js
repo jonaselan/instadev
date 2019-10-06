@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, Redirect, BrowserRouter } from 'react-router-dom';
+import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Feed from './views/Feed';
 import New from './views/New';
@@ -11,19 +11,15 @@ import { isAuthenticated } from "./services/auth";
 
 function Routes() {
   return (
-    // BrowserRouter a <Router> that uses the HTML5 history API
-    // Switch is define for set only one route for request
-    <BrowserRouter>
-      <Switch>
-        <Route path="/signin" component={SignIn} />
-        <Route path="/signup" component={SignUp} />
+    <Switch>
+      <Route path="/signin" component={SignIn} />
+      <Route path="/signup" component={SignUp} />
 
-        <PrivateRoute path="/" exact component={Feed} />
-        <PrivateRoute path="/new" component={New} />
+      <PrivateRoute path="/" exact component={Feed} />
+      <PrivateRoute path="/new" component={New} />
 
-        <Route path="*" component={NotFound} />
-      </Switch>
-    </BrowserRouter>
+      <Route path="*" component={NotFound} />
+    </Switch>
   )
 }
 
