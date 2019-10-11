@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import api from '../services/api';
+import { userId } from '../services/auth';
 import io from 'socket.io-client';
 
 import '../stylesheets/feed.scss'
@@ -23,8 +24,14 @@ class Feed extends Component {
     this.setState({ feed: resp.data });
   }
 
-  handleLike = id => {
-    api.post(`/posts/${id}/like`);
+  handleLike = post => {
+    if (!this.userLikedThisPost(post)) {
+      api.post(`/posts/${post._id}/like`);
+    }
+  }
+
+  userLikedThisPost = post => {
+    return post.likes.includes(userId());
   }
 
   registerToSocket = () => {
@@ -61,18 +68,16 @@ class Feed extends Component {
 
             <footer>
               <div className="actions">
-                <button type="button" onClick={() => this.handleLike(post._id)}>
+                <button type="button" className={this.userLikedThisPost(post) ? 'liked' : 'to-like'} onClick={() => this.handleLike(post)}>
                   <img src={like} alt="" />
                 </button>
                 <img src={comment} alt="" />
                 <img src={send} alt="" />
               </div>
 
-              <strong>Likes {post.likes}</strong>
+              <strong>{post.likes.length} likes</strong>
 
-              <p>
-                {post.description}
-              </p>
+              <p> {post.description} </p>
             </footer>
           </article>
         )) }

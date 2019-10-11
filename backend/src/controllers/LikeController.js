@@ -4,7 +4,7 @@ module.exports = {
   async store(req, res) {
     const post = await Post.findById(req.params.likeId);
 
-    post.likes++;
+    post.likes.push(req.userId);
 
     await post.save();
 

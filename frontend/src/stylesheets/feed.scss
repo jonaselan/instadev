@@ -42,7 +42,14 @@
       .actions {
         margin-bottom: 10px;
 
-        button {
+        .to-like {
+          background: transparent;
+          border: 0;
+          cursor: pointer;
+        }
+
+        .liked {
+          fill: red;
           background: transparent;
           border: 0;
           cursor: pointer;

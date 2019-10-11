@@ -27,15 +27,16 @@ $ yarn start
 ## Roadmap
 
 - ~~authentication (jwt)~~
+- ~~relate post with authenticated users~~
 - send email
-- unique like
+- ~~unique like~~
 - explore page
 - users pages
 - comments
 - hover for miniatures
 - fields validation
 - animation for upload
-- delete locally and remote
+- delete locally and remote (image)
 - pagination (infinit scroll - lazy load)
 - posted at
 - notifications
