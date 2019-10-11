@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
+import '../stylesheets/sign_up.scss';
+import '../stylesheets/shared/form.scss';
+
 import Logo from "../assets/instadev.png";
 import api from '../services/api';
-import '../stylesheets/sign_up.scss';
 
 class SignUp extends Component {
   state = {
@@ -25,7 +27,6 @@ class SignUp extends Component {
       await api.post("/signup", { username, email, password });
       this.props.history.push("/");
     } catch (err) {
-      console.log(err);
       this.setState({ error: "An error has occurred." });
     }
   };
@@ -33,15 +34,15 @@ class SignUp extends Component {
   render() {
     return (
       <div id="form-singup">
-        <form onSubmit={this.handleSignUp}>
-          <img src={Logo} id="logo-singup" alt="logo" />
-          {this.state.error && <p>{this.state.error}</p>}
+        <form onSubmit={this.handleSignUp} className="form">
+          <img src={Logo} className="header-img" alt="logo" />
+          {this.state.error && <p className="error-msg">{this.state.error}</p>}
           <input
             className="input-signup" type="text" placeholder="Username"
             onChange={e => this.setState({ username: e.target.value })}
           />
           <input
-            className="input-signup" type="email" placeholder="email"
+            className="input-signup" type="email" placeholder="Email"
             onChange={e => this.setState({ email: e.target.value })}
           />
           <input

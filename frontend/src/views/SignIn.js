@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import '../stylesheets/sign_in.scss';
+import '../stylesheets/shared/form.scss';
 
 import Logo from "../assets/instadev.png";
 import api from "../services/api";
@@ -34,15 +35,15 @@ class SignIn extends Component {
   render() {
     return (
       <div id="form-singin">
-        <form onSubmit={this.handleSignIn}>
-          <img src={Logo} alt="logo" />
-          {this.state.error && <p>{this.state.error}</p>}
+        <form onSubmit={this.handleSignIn} className="form">
+          <img src={Logo} className="header-img" alt="logo" />
+          {this.state.error && <p className="error-msg">{this.state.error}</p>}
           <input
-            type="email" placeholder="email"
+            type="email" placeholder="Email"
             onChange={e => this.setState({ email: e.target.value })}
           />
           <input
-            type="password" placeholder="password"
+            type="password" placeholder="Password"
             onChange={e => this.setState({ password: e.target.value })}
           />
           <button type="submit">Enter</button>

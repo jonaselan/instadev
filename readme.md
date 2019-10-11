@@ -1,6 +1,6 @@
 # InstaDev
 
-Simple app for study react and nodejs
+Simple Instagram clone build with nodejs and react
 
 ## Install
 
@@ -26,7 +26,7 @@ $ yarn start
 
 ## Roadmap
 
-- authentication (jwt)
+- ~~authentication (jwt)~~
 - send email
 - unique like
 - explore page
@@ -40,5 +40,6 @@ $ yarn start
 - posted at
 - notifications
 - redis?
+- auto save
 - loading splash
 - footer

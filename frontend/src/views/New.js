@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import api from '../services/api';
 
 import '../stylesheets/new.scss';
+import '../stylesheets/shared/form.scss';
 
 class New extends Component {
   state = {
@@ -38,7 +39,7 @@ class New extends Component {
 
   render() { // required
     return (
-      <form id='new-post' onSubmit={this.handleSubmit}>
+      <form id='new-post' className="form" onSubmit={this.handleSubmit}>
         <input onChange={this.handleImageChange} type="file" />
 
         <input type="text" name="author" placeholder="Author"
