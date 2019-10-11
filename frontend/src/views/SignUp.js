@@ -6,6 +6,7 @@ import '../stylesheets/shared/form.scss';
 
 import Logo from "../assets/instadev.png";
 import api from '../services/api';
+import { login } from "../services/auth";
 
 class SignUp extends Component {
   state = {
@@ -24,7 +25,8 @@ class SignUp extends Component {
     }
 
     try {
-      await api.post("/signup", { username, email, password });
+      const response = await api.post("/signup", { username, email, password });
+      login(response.data.token);
       this.props.history.push("/");
     } catch (err) {
       this.setState({ error: "An error has occurred." });

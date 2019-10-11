@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
+const Schema = mongoose.Schema;
 
 const PostSchema = new mongoose.Schema({
-  author: String,
   place: String,
   description: String,
   image: {
@@ -11,6 +11,10 @@ const PostSchema = new mongoose.Schema({
   likes: {
     type: Number,
     default: 0,
+  },
+  author: {
+    type: Schema.Types.ObjectId,
+    ref: 'User'
   }
 }, {
   timestamps: true,

@@ -11,7 +11,8 @@ pids
 *.seed
 *.pid.lock
 
-uploads/*
+# uploads/*
+uploads/resized/*
 
 # Coverage directory used by tools like istanbul
 coverage

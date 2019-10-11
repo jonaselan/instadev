@@ -5,13 +5,13 @@ const sharp = require('sharp');
 
 module.exports = {
   async index(req, res) {
-    const posts = await Post.find().sort('-createdAt');
+    const posts = await Post.find().populate({ path: 'author', select: 'username' }).sort('-createdAt');
 
     return res.status(200).json(posts);
   },
 
   async store(req, res) {
-    const { author, place, description } = req.body;
+    const { place, description } = req.body;
     const { filename: image } = req.file;
 
     const [name] = image.split('.');
@@ -28,7 +28,7 @@ module.exports = {
     fs.unlinkSync(req.file.path);
 
     const post = await Post.create({
-      author,
+      author: req.userId,
       place,
       description,
       image: fileName,

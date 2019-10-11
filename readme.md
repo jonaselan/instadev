@@ -43,3 +43,4 @@ $ yarn start
 - auto save
 - loading splash
 - footer
+- location from google api

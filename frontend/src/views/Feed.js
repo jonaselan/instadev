@@ -50,7 +50,7 @@ class Feed extends Component {
           <article key={post._id}>
             <header>
               <div className="user-info">
-                <span>{post.author}</span>
+                <span>{post.author.username}</span>
                 <span className="place"> {post.place} </span>
               </div>
 
